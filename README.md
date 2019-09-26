@@ -5,6 +5,9 @@ In the current version Mantisbt 2.22.0 the field of the due_date ticket becomes 
 But that is mostly to late!
 This solution warns you (default) five and two days before the due_date expires in green and oranje colours.
 
+![Example](/example.png)
+
+Also the 'overdue' collumn is updated with new symbols.
 
 The code has been tested in Mantisbt version 2.22.0
 
@@ -24,5 +27,3 @@ STEP 2: implement the code.
 
 When installed correctly you now will be warned five days before the due_date in green colour,
 and two days before in orange colour.
-
-![Example](/example.png)
