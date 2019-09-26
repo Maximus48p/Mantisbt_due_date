@@ -179,6 +179,8 @@ $t_last_updated = $t_show_last_updated ? date( config_get( 'normal_date_format' 
 $t_show_tags = in_array( 'tags', $t_fields ) && access_has_bug_level( config_get( 'tag_view_threshold' ), $t_bug_id );
 
 $t_bug_overdue = bug_is_overdue( $f_bug_id );
+$t_bug_near_1st = bug_is_1st_due_date( $f_bug_id ); # Parlit
+$t_bug_near_2nd = bug_is_2nd_due_date( $f_bug_id ); # Parlit
 
 $t_show_view_state = in_array( 'view_state', $t_fields );
 $t_bug_view_state_enum = $t_show_view_state ? string_display_line( get_enum_element( 'view_state', $t_bug->view_state ) ) : '';
@@ -404,6 +406,10 @@ if( $t_show_reporter || $t_show_handler || $t_show_due_date ) {
 
 		if( $t_bug_overdue ) {
 			echo '<td class="bug-due-date overdue">', $t_bug_due_date, '</td>';
+		} else if( $t_bug_near_2nd ) {
+			echo '<td class="bug-due-date near_2nd_due_date">', $t_bug_due_date, '</td>'; # near_2nd_due_date
+		} else if( $t_bug_near_1st ) {
+			echo '<td class="bug-due-date near_1st_due_date">', $t_bug_due_date, '</td>'; # near_1st_due_date
 		} else {
 			echo '<td class="bug-due-date">', $t_bug_due_date, '</td>';
 		}

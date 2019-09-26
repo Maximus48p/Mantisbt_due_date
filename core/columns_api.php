@@ -1641,6 +1641,12 @@ function print_column_due_date( BugData $p_bug, $p_columns_target = COLUMNS_TARG
 	) {
 		$t_value = '&#160;';
 	} else {
+		if( bug_is_1st_due_date( $p_bug->id ) ) {
+			$t_overdue = ' near_1st_due_date';
+		}
+		if( bug_is_2nd_due_date( $p_bug->id ) ) {
+			$t_overdue = ' near_2nd_due_date';
+		}		
 		if( bug_is_overdue( $p_bug->id ) ) {
 			$t_overdue = ' overdue';
 		}
@@ -1668,6 +1674,18 @@ function print_column_overdue( BugData $p_bug, $p_columns_target = COLUMNS_TARGE
 		$t_overdue_text = lang_get( 'overdue' );
 		$t_overdue_text_hover = sprintf( lang_get( 'overdue_since' ), date( config_get( 'short_date_format' ), $p_bug->due_date ) );
 		echo '<i class="fa fa-times-circle-o" title="' . string_display_line( $t_overdue_text_hover ) . '"></i>';
+	} else if( access_has_bug_level( config_get( 'due_date_view_threshold' ), $p_bug->id ) &&
+		!date_is_null( $p_bug->due_date ) &&
+		bug_is_2nd_due_date( $p_bug->id ) ) {
+		$t_overdue_text = lang_get( 'overdue' );
+		$t_overdue_text_hover = sprintf( lang_get( 'overdue_since' ), date( config_get( 'short_date_format' ), $p_bug->due_date ) );
+		echo '<i class="fa fa-angle-double-up" title="' . string_display_line( $t_overdue_text_hover ) . '"></i>';
+	} else if( access_has_bug_level( config_get( 'due_date_view_threshold' ), $p_bug->id ) &&
+		!date_is_null( $p_bug->due_date ) &&
+		bug_is_1st_due_date( $p_bug->id ) ) {
+		$t_overdue_text = lang_get( 'overdue' );
+		$t_overdue_text_hover = sprintf( lang_get( 'overdue_since' ), date( config_get( 'short_date_format' ), $p_bug->due_date ) );
+		echo '<i class="fa fa-angle-up" title="' . string_display_line( $t_overdue_text_hover ) . '"></i>';
 	} else {
 		echo '&#160;';
 	}

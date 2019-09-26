@@ -93,6 +93,13 @@ tr.bugnote .bugnote-note { background-color: #e8e8e8; color: #000000; width: 75%
 .color-project		{ background-color: LightGreen; }
 
 td.overdue        	{ background-color: #d15b47; color: #ffffff; font-weight: bold; }
+
+/* within 1st due_date */
+td.near_1st_due_date	{ background-color: #a6d147; color: #ffffff; font-weight: bold; }
+
+/* within 2nd due_date */
+td.near_2nd_due_date	{ background-color: #d19447; color: #ffffff; font-weight: bold; }
+
 td.print-overdue    { font-weight: bold; }
 
 .collapse-link { cursor: pointer; }

@@ -1149,6 +1149,36 @@ function bug_is_overdue( $p_bug_id ) {
 	return false;
 }
 
+// Function to determine bug within the 1st_due_date_warning timeframe
+function bug_is_1st_due_date( $p_bug_id ) {
+	$t_due_date = bug_get_field( $p_bug_id, 'due_date' );
+	$t_1st_due_date_warning = config_get( '1st_due_date_warning' );
+	if( !date_is_null( $t_due_date ) ) {
+		$t_now = db_now() + $t_1st_due_date_warning;
+		if( $t_now > $t_due_date ) {
+			if( !bug_is_resolved( $p_bug_id ) ) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+// Function to determine bug within the 2nd_due_date_warning timeframe
+function bug_is_2nd_due_date( $p_bug_id ) {
+	$t_due_date = bug_get_field( $p_bug_id, 'due_date' );
+	$t_2nd_due_date_warning = config_get( '2nd_due_date_warning' );
+	if( !date_is_null( $t_due_date ) ) {
+		$t_now = db_now() + $t_2nd_due_date_warning;
+		if( $t_now > $t_due_date ) {
+			if( !bug_is_resolved( $p_bug_id ) ) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 /**
  * Validate workflow state to see if bug can be moved to requested state
  * @param integer $p_bug_status    Current bug status.
