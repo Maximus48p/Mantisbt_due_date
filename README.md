@@ -13,7 +13,7 @@ My first Github project.... hopefully everythings goes well.
 STEP 1:
 Add 3 lines below in your config_inc.php file;
 
-# When do want to be warned before the due_date expires? Time is mentioned in secconds.
+# When do want to be warned before the due_date expires? Time is mentioned in seconds.
 $g_1st_due_date_warning = 432000; # get's color green (default 5 days)
 $g_2nd_due_date_warning = 172800; # get's color orange and always less seconds then the 1st warning (default 2 days)
 
