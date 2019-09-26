@@ -25,4 +25,4 @@ STEP 2: implement the code.
 When installed correctly you now will be warned five days before the due_date in green colour,
 and two days before in orange colour.
 
-![alt text](https://github.com/Maximus48p/Mantisbt_due_date/example.png)
+![Example](/example.png)
