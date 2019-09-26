@@ -7,7 +7,7 @@ This solution warns you (default) five and two days before the due_date expires 
 
 ![Example](/example.png)
 
-Also the 'overdue' collumn is updated with new symbols.
+Also the 'overdue' column is updated with new symbols.
 
 The code has been tested in Mantisbt version 2.22.0
 
